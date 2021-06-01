@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Квадратное уравнение</title>
+	</head>
+	<body>
+		<ins>Квадратное уравнение</ins> имеет вид <br>
+		ax<sup>2</sup> + by + c = 0 <br>
+		И решается с помощью формулы <br>
+		x<sub>1,2</sub> = (-b &#177; &#8730;D) / 2a<br>
+		Где <br>
+		D = b<sup>2</sup> - 4ac <br><br>
+		Например: <br>
+		x<sup>2</sup> - 3y -10 = 0 <br>
+		a = 1, b = -3, c = -10 <br>
+		Значит<br>
+		D = 9 - 4 * 1 * (-10) = 9 + 40 = 49<br>
+		D больше 0, следовательно<br>
+		x<sub>1,2</sub> = (3 &#177; &#8730;49) / 2<br>
+		x<sub>1</sub> = (3 + 7) / 2 = 10 / 2 = 5<br>
+		x<sub>2</sub> = (3 - 7) / 2 = -4 / 2 = -2<br>
+		<h3>Функции для решения квадратного уравнения</h3>
+		<ins>Для Pascal:</ins><br><br>
+		<kbd>
+		function Solve2(a, b, c: Real; var x1, x2: Real): Integer;<br>
+		var d: Real;<br>
+		begin<br>
+		&nbsp;if a=0 then begin writeln('Неверные данные'); Exit end;<br>
+		&nbsp;d:=Sqr(b)-4*a*c;<br>
+		&nbsp;if d<0 then begin writeln('Нет корней'); Exit end;;<br>
+		&nbsp;if d>0 then begin x1:=(-b+ScRt(d))/a; x2:=(-b-ScRt(d))/a; end;<br>
+		&nbsp;else begin x1:=(-b)/a; x2:=x1 end;<br>
+		end;</kbd><br><br>
+		<ins>Для С++:</ins><br><br>
+		<kbd>#include <iostream> <br>
+		#include <cmath> <br><br>
+
+		using namespace std;<br><br>
+
+		int main()<br>
+		{<br>
+		&nbsp;double a,b,c,d,x1,x2; <br>
+		&nbsp;cout << "Введите a\n"; <br>
+		&nbsp;cin >> a;<br>
+		&nbsp;cout << "Введите b\n";<br>
+		&nbsp;cin >> b;<br>
+		&nbsp;cout << "Введите c\n";<br>
+		&nbsp;cin >> c;<br>
+		&nbsp;d = b * b - 4 * a * c; <br>
+		&nbsp;if (d > 0) <br>
+		&nbsp;{<br>
+		&nbsp;&nbsp;x1 = ((-b) + sqrt(d)) / (2 * a);<br>
+		&nbsp;&nbsp;x2 = ((-b) - sqrt(d)) / (2 * a);<br>
+		&nbsp;&nbsp;cout << "x1 = " << x1 << "\n";<br>
+		&nbsp;&nbsp;cout << "x2 = " << x2 << "\n";<br>
+		&nbsp;}<br>
+		&nbsp;if (d == 0) <br>
+		&nbsp;{<br>
+		&nbsp;&nbsp;x1 = -(b / (2 * a));<br>
+		&nbsp;&nbsp;cout << "x1 = x2 = " << x1 << "\n";<br>
+		&nbsp;}<br>
+		&nbsp;if (d < 0)<br>
+		&nbsp;&nbsp;cout << "D < 0, Действительных корней уравнения не существует";<br>
+		}
+	</body>
+</html>
